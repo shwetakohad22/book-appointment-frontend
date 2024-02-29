@@ -15,11 +15,15 @@ function Notifications() {
   const markAllAsSeen=async()=>{
     try {
         dispatch(showLoading());
-        const response = await axios.post("/api/user/mark-all-notifications-as-seen", {userId : user._id} , {
+        const response = await axios.post(
+          "https://book-appointment-backend.onrender.com/api/user/mark-all-notifications-as-seen",
+          { userId: user._id },
+          {
             headers: {
-                Authorization : `Bearer ${localStorage.getItem("token")}`
-            }
-        });
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         dispatch(hideLoading());
         if (response.data.success) {
           toast.success(response.data.message)

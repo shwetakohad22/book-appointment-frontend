@@ -11,11 +11,14 @@ function Home() {
   const getData = async () => {
     try {
       dispatch(showLoading());
-      const response = await axios.get("/api/user/get-all-approved-doctors", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      });
+      const response = await axios.get(
+        "https://book-appointment-backend.onrender.com/api/user/get-all-approved-doctors",
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
       dispatch(hideLoading());
       if (response.data.success) {
         setDoctors(response.data.data);

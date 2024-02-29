@@ -13,11 +13,14 @@ function DoctorsList() {
   const getDoctorsData = async () => {
     try {
       dispatch(showLoading());
-      const resposne = await axios.get("/api/admin/get-all-doctors", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const resposne = await axios.get(
+        "https://book-appointment-backend.onrender.com/api/admin/get-all-doctors",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       dispatch(hideLoading());
       if (resposne.data.success) {
         setDoctors(resposne.data.data);
@@ -31,7 +34,7 @@ function DoctorsList() {
     try {
       dispatch(showLoading());
       const resposne = await axios.post(
-        "/api/admin/change-doctor-account-status",
+        "https://book-appointment-backend.onrender.com/api/admin/change-doctor-account-status",
         { doctorId: record._id, userId: record.userId, status: status },
         {
           headers: {
