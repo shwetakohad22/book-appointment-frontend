@@ -1,11 +1,12 @@
-import { Button, Col, DatePicker, Row, TimePicker } from "antd";
+import { Button, Col, DatePicker, Form, Input, Row, TimePicker } from "antd";
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import {  useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import DoctorForm from "../components/DoctorForm";
 import moment from "moment";
 
 function BookAppointment() {
@@ -93,9 +94,8 @@ function BookAppointment() {
 
       dispatch(hideLoading());
       if (response.data.success) {
-        
         toast.success(response.data.message);
-        navigate('/appointments')
+        navigate("/appointments");
       }
     } catch (error) {
       toast.error("Error booking appointment");
@@ -115,13 +115,12 @@ function BookAppointment() {
           </h1>
           <hr />
           <Row gutter={20} className="mt-5" align="middle">
-
             <Col span={8} sm={24} xs={24} lg={8}>
               <img
                 src="https://thumbs.dreamstime.com/b/finger-press-book-now-button-booking-reservation-icon-online-149789867.jpg"
                 alt=""
                 width="100%"
-                height='400'
+                height="400"
               />
             </Col>
             <Col span={8} sm={24} xs={24} lg={8}>
@@ -160,12 +159,14 @@ function BookAppointment() {
                     setTime(moment(value).format("HH:mm"));
                   }}
                 />
-              {!isAvailable &&   <Button
-                  className="primary-button mt-3 full-width-button"
-                  onClick={checkAvailability}
-                >
-                  Check Availability
-                </Button>}
+                {!isAvailable && (
+                  <Button
+                    className="primary-button mt-3 full-width-button"
+                    onClick={checkAvailability}
+                  >
+                    Check Availability
+                  </Button>
+                )}
 
                 {isAvailable && (
                   <Button
@@ -177,7 +178,6 @@ function BookAppointment() {
                 )}
               </div>
             </Col>
-           
           </Row>
         </div>
       )}
