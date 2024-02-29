@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Badge } from "antd";
 import userImage from "../images/user.png";
 import Admin from "../images/admin.png";
-import Doctor from "../images/doctor.png"
+import Doctor from "../images/doctor.png";
 
 function Layout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
@@ -75,11 +75,7 @@ function Layout({ children }) {
   const role = user?.isAdmin ? "Admin" : user?.isDoctor ? "Doctor" : "User";
 
   const logoURL =
-    role === "Admin"
-      ? Admin
-      : role === "User"
-      ? userImage
-      : Doctor;
+    role === "Admin" ? Admin : role === "User" ? userImage : Doctor;
 
   return (
     <div className="main">
