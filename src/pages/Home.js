@@ -5,11 +5,9 @@ import { Col, Row } from "antd";
 import Doctor from "../components/Doctor";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
-
 function Home() {
   const [doctors, setDoctors] = useState([]);
   const dispatch = useDispatch();
-
   const getData = async () => {
     try {
       dispatch(showLoading());
@@ -32,15 +30,12 @@ function Home() {
 
   useEffect(() => {
     getData();
-    // Include getData in the dependency array
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <Layout>
       <Row gutter={20}>
         {doctors.map((doctor) => (
-          <Col key={doctor._id} span={8} xs={24} sm={24} lg={8}>
+          <Col span={8} xs={24} sm={24} lg={8}>
             <Doctor doctor={doctor} />
           </Col>
         ))}
