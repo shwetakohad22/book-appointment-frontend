@@ -1,3 +1,4 @@
+import { Button, Col, Form, Input, Row, TimePicker } from "antd";
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +19,7 @@ function Profile() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/update-doctor-profile",
+        "https://book-appointment-backend.onrender.com/api/doctor/update-doctor-profile",
         {
           ...values,
           userId: user._id,
@@ -50,7 +51,7 @@ function Profile() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/get-doctor-info-by-user-id",
+        "https://book-appointment-backend.onrender.com/api/doctor/get-doctor-info-by-user-id",
         {
           userId: params.userId,
         },

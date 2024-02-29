@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Layout from "../../components/Layout";
 import { showLoading, hideLoading } from "../../redux/alertsSlice";
-import {toast} from 'react-hot-toast'
+import { toast } from "react-hot-toast";
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
@@ -48,7 +48,7 @@ function DoctorsList() {
         getDoctorsData();
       }
     } catch (error) {
-      toast.error('Error changing doctor account status');
+      toast.error("Error changing doctor account status");
       dispatch(hideLoading());
     }
   };
@@ -72,7 +72,7 @@ function DoctorsList() {
     {
       title: "Created At",
       dataIndex: "createdAt",
-      render: (record , text) => moment(record.createdAt).format("DD-MM-YYYY"),
+      render: (record, text) => moment(record.createdAt).format("DD-MM-YYYY"),
     },
     {
       title: "status",
